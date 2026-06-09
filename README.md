@@ -35,6 +35,8 @@ The project uses the Fake and Real News Dataset consisting of news articles coll
 
 https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
 
+**Note:** The original dataset files (`Fake.csv` and `True.csv`) are not included in this repository due to size considerations. They can be downloaded directly from the dataset source above.
+
 ## Methodology
 
 The project follows a complete NLP pipeline beginning with text cleaning and ending with news authenticity prediction.
@@ -89,20 +91,22 @@ These visualizations provide insights into the structure and characteristics of 
 
 ## Models Evaluated
 
-Four machine learning algorithms were trained and evaluated.
+Four machine learning algorithms were trained and evaluated to determine the most effective approach for fake news classification.
 
-| Model |
-|---------|
-| Logistic Regression |
-| Naive Bayes |
-| Random Forest |
-| Support Vector Machine (SVM) |
+| Model | Accuracy |
+|---------|---------|
+| Random Forest | **99.55%** |
+| Support Vector Machine (SVM) | 99.37% |
+| Logistic Regression | 98.42% |
+| Naive Bayes | 92.72% |
 
-The models were compared using standard classification metrics and accuracy scores to identify the best-performing classifier.
+Among all evaluated models, **Random Forest** achieved the highest accuracy and was selected as the final model.
 
 ## Model Evaluation
 
-Performance was evaluated using:
+Performance was evaluated using multiple classification metrics to ensure reliable assessment of model effectiveness.
+
+### Evaluation Metrics
 
 - Accuracy
 - Precision
@@ -111,7 +115,31 @@ Performance was evaluated using:
 - Confusion Matrix
 - Cross Validation
 
-The project also includes K-Fold Cross Validation to assess model stability and generalization performance.
+### Best Performing Model
+
+**Random Forest Classifier**
+
+| Metric | Score |
+|----------|----------|
+| Accuracy | 99.55% |
+| Cross Validation Accuracy | 99.54% |
+| Number of CV Folds | 5 |
+
+The Random Forest model achieved the highest overall accuracy and demonstrated excellent stability during cross-validation testing.
+
+### Cross Validation Results
+
+| Fold | Accuracy |
+|---------|---------|
+| Fold 1 | 99.67% |
+| Fold 2 | 99.71% |
+| Fold 3 | 99.46% |
+| Fold 4 | 99.43% |
+| Fold 5 | 99.44% |
+
+**Average Cross Validation Accuracy: 99.54%**
+
+These results indicate that the model generalizes exceptionally well and maintains consistent performance across different subsets of the dataset.
 
 ## Feature Importance Analysis
 
@@ -131,7 +159,7 @@ The notebook includes an interactive prediction system where users can enter the
 - Predicted Class (Fake or Real)
 - Confidence Score
 
-Example:
+### Example
 
 ```text
 Input:
@@ -177,7 +205,7 @@ pip install pandas numpy scikit-learn matplotlib seaborn nltk wordcloud joblib
 jupyter notebook Fake_News.ipynb
 ```
 
-The notebook includes data preprocessing, exploratory analysis, model training, evaluation, visualization, and interactive prediction.
+The notebook includes data preprocessing, exploratory analysis, model training, evaluation, visualization, feature analysis, and interactive prediction.
 
 ## Key Findings
 
@@ -185,11 +213,16 @@ The project demonstrates that traditional machine learning algorithms combined w
 
 Important observations include:
 
-- NLP preprocessing significantly improves classification quality.
-- TF-IDF provides strong text representations for fake news detection.
-- Feature importance analysis helps interpret model decisions.
-- Cross-validation confirms model stability.
-- Machine learning can effectively automate news authenticity classification.
+- Random Forest achieved the highest accuracy of **99.55%**.
+- Support Vector Machine achieved **99.37%** accuracy and performed competitively.
+- Logistic Regression achieved **98.42%** accuracy despite its simplicity.
+- Naive Bayes achieved **92.72%** accuracy and served as a strong baseline model.
+- NLP preprocessing significantly improved classification quality.
+- TF-IDF provided highly effective text representations for fake news detection.
+- Feature importance analysis helped interpret model decisions.
+- Cross-validation confirmed model stability and robustness.
+
+The results demonstrate that machine learning can accurately automate the task of fake news detection when combined with appropriate text preprocessing and feature engineering techniques.
 
 ## Future Improvements
 
